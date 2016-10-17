@@ -1,0 +1,21 @@
+#Script per llistar paraules de x lletres
+#!/bin/bash
+
+num_lletres=$1
+origen=$2
+desti=$3
+
+if [  $# -le 1 ]
+then
+        echo "Usage: " $0 NOMBRE_LLETRES DICCIONARI_ORIGEN DICCIONARI_DESTI
+        exit
+fi
+
+while read -r paraula
+do
+        longitud=${#paraula}
+        if [ $longitud -eq $num_lletres ]
+        then
+                echo "$paraula">>$desti
+        fi
+done < "$origen"
